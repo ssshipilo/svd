@@ -54,8 +54,8 @@ body, html{
 .numeric-double-input input,
 .numeric-input input,
 .select-input{
-    background: #095a53c4;
-    border: 1px solid #000;
+    background: rgba(28, 32, 32, 0.77);
+    border: 1px solid #3a3a3a;
     color: #fff;
     font-weight: 500;
 }
@@ -167,6 +167,7 @@ body, html{
     .img_src{
         width: 100%;
         padding: 10px;
+        min-height: 150px;
         border-radius: 5px;
         background: rgba(43, 42, 42, 0.267);
         border: 1px solid #707070;
@@ -178,6 +179,20 @@ button:disabled{
     cursor: default;
 }
 
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
 .generate:not(:disabled):hover{
     opacity: 0.4;
     transition: 0.2s ease;
@@ -185,7 +200,9 @@ button:disabled{
 .generate{
     width: 100%;
     height: 40px!important;
-    background: linear-gradient( 45deg, rgb(46, 91, 236), rgb(85, 218, 195) );
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
     border-radius: 5px;
     color: #fff;
     transition: 0.2s ease;
@@ -200,7 +217,8 @@ button:disabled{
 
 .params{
     width: 100%;
-    max-width: 400px;
+    @include mq(0px){max-width: 100%;}
+    @include mq(1200px){max-width: 400px;}
     height: 100%;
     border-radius: 10px;
     padding: 10px;
@@ -312,6 +330,7 @@ button:disabled{
     padding: 10px;
     color: #fff;
     cursor: pointer;
+    height: 100%;
     gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
@@ -350,28 +369,203 @@ button:disabled{
         max-height: 60vh;
         object-fit: contain;
     }
+}
 
+@keyframes animation_trash{
+    0%{
+        transform: rotate(0deg);
+    }
+    30%{
+        transform: rotate(12deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    80%{
+        transform: rotate(-12deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+.hidden{
+    display: none!important;
+}
+
+.result_video .alert{
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(9, 15, 34, 0.431372549);
+    display: flex;
+    border-top: 1px solid #61616180;
+}
+    
+
+.db_empty{
+    width: 100%;
+    height: 100%;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    svg{
+        width: 50px;
+        height: 50px;
+    }
+
+    h5{
+        display: flex;
+        color: #fff;
+        font-size: 15px;
+        margin-top: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 }
 
 .result_video{
     width: 100%;
+    background: rgba(43, 42, 42, 0.192);
+    border: 1px solid #70707077;
+    border-radius: 10px;
 
-    .container_video{
+    .history_created_video{
         width: 100%;
-        padding: 10px;
         min-height: 200px;
-        border-radius: 5px;
-        background: rgba(43, 42, 42, 0.267);
-        border: 1px solid #707070;
+        border-radius: 10px;
+        overflow: hidden;
     }
+
+    .title_box{
+        padding: 5px 10px;
+        height: 50px;
+        background: #090f226e;
+        border-radius: 10px 10px 0 0;
+        color: #fff;
+        font-weight: 500;
+        justify-content: space-between;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        align-items: center;
+
+        h2{
+            font-size: 19px;
+        }
+
+        
+        button:hover{
+            transition: 0.3s ease;
+
+            svg{
+                animation: animation_trash  .5s ease infinite;
+            }
+        }
+
+        button{
+            width: 30px;
+            height: 30px;
+            border: 1px solid #fff;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 7px;
+            transition: 0.3s ease;
+
+            svg{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .history_created_caption{
+        padding: 5px 10px;
+        height: 35px;
+        background: rgba(42, 81, 115, 0.28);
+        border-bottom: 1px solid #3c3c3c;
+        color: #fff;
+        font-weight: 500;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        align-items: center;
+    }
+    .history_created_video .box:nth-child(even){
+        background: #0e1a4133;
+    }
+    .history_created_video .box:nth-child(odd){
+        background: #040a1d3d;
+    }
+
+    .history_created_video .box{
+        padding: 5px 10px;
+        height: 50px;
+        border-radius: 10px 10px 0 0;
+        border-bottom: 1px solid #7070703b;
+        color: #fff;
+        font-weight: 500;
+        display: flex;
+        font-family: Arial, Helvetica, sans-serif;
+        align-items: center;
+
+        button:hover{
+            background: rgba(58, 58, 116, 0.11);
+            transition: 0.3s ease;
+
+            svg{
+                animation: animation_trash  .5s ease infinite;
+            }
+        }
+
+        button{
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            display: flex;
+            transition: 0.3s ease;
+            border: none;
+            background: rgba(80, 80, 134, 0.27);
+            justify-content: center;
+            align-items: center;
+        }
+
+        svg{
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .history_created_video .box,
+    .history_created_caption{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 100px 50px;
+    }
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .top_panel{
     width: 100%;
+    border-bottom: 1px solid #727273;
     display: flex;
     @include mq(0px){flex-direction: column; gap: 20px; height: auto; padding: 20px 20px; justify-content: center; align-items: center;}
     @include mq(500px){flex-direction: row; gap: 10px; height: 50px; padding: 0 20px; justify-content: space-between; align-items: center;}
-    background: linear-gradient(45deg, rgb(6, 37, 105), rgb(1, 100, 104));
+    background: transparent;
+
+    
     z-index: 1000;
     position: relative;
     

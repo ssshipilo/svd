@@ -62,7 +62,35 @@
                 </button>
         
                 <div class="result_video">
-                    <div class="container_video"></div>
+                    <div class="title_box">
+                        <h2>Production History:</h2>
+                        <button id="clear_all_db">
+                            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.121 21.364 2.122-2.121m2.121-2.122-2.121 2.122m0 0L17.12 17.12m2.122 2.122 2.121 2.121M4 6v6s0 3 7 3 7-3 7-3V6" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" class="stroke-000000"></path><path d="M11 3c7 0 7 3 7 3s0 3-7 3-7-3-7-3 0-3 7-3ZM11 21c-7 0-7-3-7-3v-6" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" class="stroke-000000"></path></svg>
+                        </button>
+                    </div>
+
+                    <div class="alert">
+                        <span class="loader">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M18.364 5.636 16.95 7.05A7 7 0 1 0 19 12h2a9 9 0 1 1-2.636-6.364z" fill="#ffffff" class="fill-000000"></path></svg>
+                        </span>
+                        <div class="db_empty hidden">
+                            <svg fill="none" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5 12v6s0 3 7 3 7-3 7-3v-6" stroke="#d0ced9" class="stroke-000000"></path><path d="M5 6v6s0 3 7 3 7-3 7-3V6" stroke="#d0ced9" class="stroke-000000"></path><path d="M12 3c7 0 7 3 7 3s0 3-7 3-7-3-7-3 0-3 7-3Z" stroke="#d0ced9" class="stroke-000000"></path></svg>
+                            <h5>Video production history database is empty</h5>
+                        </div>
+                    </div>
+
+                    <div class="db_history hidden">
+                        <div class="history_created_caption">
+                            <span>Process</span>
+                            <span>Message</span>
+                            <span class="center">Date</span>
+                            <span class="center">Status</span>
+                            <span></span>
+                        </div>
+                        <div class="history_created_video">
+                            <!-- js -->
+                        </div>
+                    </div>
                 </div>
                 
             </div>
@@ -96,39 +124,39 @@
                             </div>
 
                             <div class="numeric-input">
-                                <span>Количество шагов (num_steps)</span>
+                                <span>Number of steps (num_steps)</span>
                                 <input id="num_steps" type="text" value="15" placeholder="" min="0" max="10000" oninput="validateNumericInput(this)">
-                                <i>Это параметр, указывающий, сколько шагов выполнить при создании видео.</i>
+                                <i>This is a parameter that specifies how many steps to perform when creating a video.</i>
                             </div>
 
                             <div class="numeric-input">
-                                <span>Число кадров в секунду (fps_id)</span>
+                                <span>Number of frames per second (fps_id)</span>
                                 <input id="fps_id" type="text" value="6" placeholder="" min="0" max="10000" oninput="validateNumericInput(this)">
-                                <i>Это количество кадров в секунду для создаваемого видео.</i>
+                                <i>This is the number of frames per second for the video being created.</i>
                             </div>
 
                             <div class="numeric-input">
-                                <span>Идентификатор "motion bucket"</span>
+                                <span>The identifier "motion bucket"</span>
                                 <input id="motion_bucket" type="text" value="127" placeholder="" min="0" max="10000" oninput="validateNumericInput(this)">
-                                <i> Это идентификатор, связанный с движением, который влияет на результат видео.</i>
+                                <i>This is a motion-related identifier that affects the outcome of the video.</i>
                             </div>
 
                             <div class="numeric-double-input">
-                                <span>Условное увеличение (cond_aug)</span>
+                                <span>Conditional increase (cond_aug)</span>
                                 <input id="cond_aug" type="text" value="0.02" placeholder="" min="0.00" max="5">
-                                <i>Это параметр, связанный с аугментацией данных.</i>
+                                <i>This is a parameter related to data augmentation.</i>
                             </div>
                             
                             <div class="numeric-input">
-                                <span>Зерно для генерации случайных чисел (seed)</span>
+                                <span>Seed for random number generation (seed)</span>
                                 <input id="seed" type="text" value="23" placeholder="" min="0" max="10000" oninput="validateNumericInput(this)">
-                                <i>Это начальное значение для генератора случайных чисел.</i>
+                                <i>This is the initial value for the random number generator.</i>
                             </div>
                             
                             <div class="numeric-input">
-                                <span>Количество кадров, декодируемых за один раз! (decoding_t)</span>
+                                <span>Number of frames decoded at one time! (decoding_t)</span>
                                 <input id="decoding_t" type="text" value="5" placeholder="" min="0" max="50" oninput="validateNumericInput(this)">
-                                <i>Это съедает больше всего VRAM. При необходимости уменьшите.</i>
+                                <i>This eats up the most VRAM. Reduce it if necessary.</i>
                             </div>
                             
 
