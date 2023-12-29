@@ -58,7 +58,12 @@ print("\033[92m[AUTO INSTALL]\033[0m Successful!!!")
 # Скачивание более легкой модели обученной на 14 кадрах
 print("\033[92m[AUTO INSTALL]\033[0m Download an enlarged model trained on video at 14 fps")
 try:
-    result = subprocess.run(['wget -O ./checkpoints/svd.safetensors https://huggingface.co/stabilityai/stable-video-diffusion-img2vid/resolve/main/svd.safetensors?download=true'], check=True)
+    result = subprocess.run([
+        'wget',
+        '-O',
+        './checkpoints/svd_xt.safetensors',
+        'https://huggingface.co/stabilityai/stable-video-diffusion-img2vid-xt/resolve/main/svd_xt.safetensors?download=true'
+    ], check=True)
     print(result.stdout)
 except subprocess.CalledProcessError as e:
     print(f"Error: {e}")
